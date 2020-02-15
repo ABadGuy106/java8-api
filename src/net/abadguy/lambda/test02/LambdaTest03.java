@@ -1,6 +1,6 @@
-package net.abadguy.test02;
+package net.abadguy.lambda.test02;
 
-import net.abadguy.test01.Employee;
+import net.abadguy.lambda.test01.Employee;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

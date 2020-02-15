@@ -1,6 +1,5 @@
-package net.abadguy.test01;
+package net.abadguy.lambda.test01;
 
-import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;

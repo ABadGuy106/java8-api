@@ -1,4 +1,4 @@
-package net.abadguy.test01;
+package net.abadguy.lambda.test01;
 
 
 public class Employee {

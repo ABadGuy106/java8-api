@@ -1,4 +1,4 @@
-package net.abadguy.test02;
+package net.abadguy.lambda.test02;
 
 import org.junit.jupiter.api.Test;
 
