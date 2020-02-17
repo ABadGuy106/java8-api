@@ -3,6 +3,7 @@ package net.abadguy.stream.test01;
 import net.abadguy.lambda.test01.Employee;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
@@ -72,4 +73,49 @@ public class TestStreamAPI2 {
      *      该函数会被应用到每个元素上，并将其映射成一个新的元素
      * flatMap-接收一个函数作为参数，将流中的每个值都换成另一个流，然后把所有的流连接成一个流
      */
+    @Test
+    public void test5(){
+        List<String> list=Arrays.asList("aa","bb","cc","dd","ee","ff");
+        list.stream().map(str->str.toUpperCase())
+                .forEach(System.out::print);
+        System.out.println("---------------------");
+        employees.stream().map(Employee::getName)
+                .forEach(System.out::println);
+        System.out.println("---------------------");
+        Stream<Stream<Character>> stream=list.stream().map(TestStreamAPI2::filterCharacter);
+        stream.forEach(sm->sm.forEach(System.out::println));
+        System.out.println("=================");
+        list.stream().flatMap(TestStreamAPI2::filterCharacter)
+                .forEach(System.out::println);
+    }
+
+    public static Stream<Character> filterCharacter(String str){
+        List<Character> list=new ArrayList<>();
+        for (Character c:str.toCharArray()){
+            list.add(c);
+        }
+        return list.stream();
+    }
+    /**
+     * 排序
+     * sorted()-自然排序
+     * sorted(Compartor com)-定制排序
+     */
+    @Test
+    public void test7(){
+        List<String> list=Arrays.asList("ee","cc","aa","dd","bb","ff");
+        list.stream()
+                .sorted()
+                .forEach(System.out::println);
+        System.out.println("--------------------");
+        employees.stream()
+                .sorted((e1,e2)->{
+                   if(e1.getAge()==e2.getAge()){
+                        return e1.getName().compareTo(e2.getName());
+                   }else {
+                       return ((Integer)e1.getAge())
+                               .compareTo((Integer)e2.getAge());
+                   }
+                }).forEach(System.out::println);
+    }
 }
